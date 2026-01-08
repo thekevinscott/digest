@@ -75,6 +75,11 @@ def main() -> None:
         description="Extract insights from Claude Code transcripts"
     )
     parser.add_argument(
+        "--path",
+        metavar="DIR",
+        help="Base directory containing notes/logs/ (default: cwd)",
+    )
+    parser.add_argument(
         "--list", action="store_true", help="Show transcripts with unprocessed lines"
     )
     parser.add_argument("--extract", metavar="ID", help="Extract content from transcript")
@@ -88,7 +93,7 @@ def main() -> None:
     )
 
     args = parser.parse_args()
-    api = DigestAPI()
+    api = DigestAPI(base_dir=args.path)
 
     if args.list or (not args.extract and not args.mark):
         cmd_list(api)

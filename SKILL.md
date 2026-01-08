@@ -45,6 +45,12 @@ uv run --project ~/.claude/skills/digest digest --list
 
 If output is "Nothing new to process", stop here.
 
+Use `--path <dir>` to specify a different base directory (defaults to cwd):
+
+```bash
+uv run --project ~/.claude/skills/digest digest --path /other/project --list
+```
+
 ### 2. Extract and analyze
 
 For each session with new content:
