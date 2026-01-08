@@ -21,20 +21,19 @@ All in `notes/digest/`:
 
 ## Entry Format
 
-Each entry should be timestamped and separated by dashes:
+Append only the entry block - no file headers, titles, or descriptions:
 
 ```
 ---
 ### 2026-01-07
 
+## project-name
+
 - Item from this session
 - Another item
-
----
-### 2026-01-06
-
-- Earlier item
 ```
+
+Do not add `# File Title` or description text. Files are append-only logs.
 
 ## Instructions
 
@@ -58,36 +57,30 @@ This outputs cleaned message text (user/assistant only, no metadata).
 
 **What to look for**:
 
-**Opportunities** (append to `notes/digest/opportunities.md`):
-- Explicit mentions: "could improve", "should optimize", "better way"
-- Friction: repeated steps, workarounds, things that felt slow
+**Opportunities** (`opportunities.md`):
+- "could improve", "should optimize", "better way"
+- Friction, repeated steps, workarounds
 - Failed approaches that revealed a gap
-- Tag by project: add under `## <project>` section (create if needed)
 
-**Loose ends** (append to `notes/digest/loose-ends.md`):
-- TODOs mentioned but not completed in the session
+**Loose ends** (`loose-ends.md`):
+- TODOs not completed in the session
 - Questions raised but not answered
-- "Need to" or "should" statements without resolution
-- Things deferred explicitly ("will do later", "not now")
-- Tag by project: add under `## <project>` section
+- "Need to" / "should" without resolution
 
-**Research backlog** (append to `notes/digest/research-backlog.md`):
-- "Interesting", "worth exploring", "might be cool"
+**Research backlog** (`research-backlog.md`):
+- "Interesting", "worth exploring"
 - Techniques mentioned but not tried
 - Links/references saved for later
-- Just bullet points with optional tags
 
-**Blog grist** (append to `notes/digest/blog-grist.md`):
-- Significant work completed (features, fixes, new capabilities)
+**Blog grist** (`blog-grist.md`):
+- Significant work completed
 - Problems solved in interesting ways
 - Patterns or insights that emerged
-- Tag by project: add under `## <project>` section
 
-**Memories** (append to `notes/digest/things-learned.md`):
-- User preferences expressed ("I prefer...", "don't like...")
-- Environment facts learned (paths, configs, tools)
+**Memories** (`things-learned.md`):
+- User preferences ("I prefer...", "don't like...")
+- Environment facts (paths, configs, tools)
 - Workflow patterns to remember
-- Add under appropriate section header
 
 ### 3. Mark processed
 
