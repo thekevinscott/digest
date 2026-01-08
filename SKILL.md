@@ -25,13 +25,15 @@ Append only the entry block - no file headers, titles, or descriptions:
 
 ```
 ---
-### 2026-01-07
+### YYYY-MM-DD HH:MM
 
 ## project-name
 
 - Item from this session
 - Another item
 ```
+
+Use `date '+%Y-%m-%d %H:%M'` to get the current timestamp.
 
 Do not add `# File Title` or description text. Files are append-only logs.
 
