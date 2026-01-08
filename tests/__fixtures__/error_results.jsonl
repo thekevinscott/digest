@@ -1,0 +1,9 @@
+{"type": "user", "message": {"content": "Read a file that doesn't exist"}}
+{"type": "assistant", "message": {"content": [{"type": "tool_use", "id": "toolu_1", "name": "Read", "input": {"file_path": "/nonexistent.txt"}}]}}
+{"type": "user", "message": {"content": [{"type": "tool_result", "tool_use_id": "toolu_1", "content": "Error: File not found: /nonexistent.txt", "is_error": true}]}}
+{"type": "assistant", "message": {"content": [{"type": "text", "text": "The file doesn't exist. Let me try another approach."}]}}
+{"type": "assistant", "message": {"content": [{"type": "tool_use", "id": "toolu_2", "name": "Bash", "input": {"command": "invalid-command"}}]}}
+{"type": "user", "message": {"content": [{"type": "tool_result", "tool_use_id": "toolu_2", "content": "bash: invalid-command: command not found", "is_error": true}]}}
+{"type": "assistant", "message": {"content": [{"type": "tool_use", "id": "toolu_3", "name": "Read", "input": {"file_path": "/etc/hostname"}}]}}
+{"type": "user", "message": {"content": [{"type": "tool_result", "tool_use_id": "toolu_3", "content": "myhost"}]}}
+{"type": "assistant", "message": {"content": [{"type": "text", "text": "Got it - hostname is myhost."}]}}

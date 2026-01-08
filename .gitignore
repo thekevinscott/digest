@@ -1,0 +1,33 @@
+# Local notes (backed up separately)
+notes/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+*.egg-info/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+
+# UV
+.python-version
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Build artifacts
+dist/
+build/
+target/
+bin/
+
+# OS
+.DS_Store
+Thumbs.db

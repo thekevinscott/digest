@@ -1,0 +1,4 @@
+{"type": "user", "message": {"content": "Help me write a function"}}
+{"type": "assistant", "message": {"content": [{"type": "thinking", "thinking": "The user wants help writing a function. Let me think about what they might need..."}, {"type": "text", "text": "I'd be happy to help. What kind of function do you need?"}]}}
+{"type": "user", "message": {"content": "A factorial function"}}
+{"type": "assistant", "message": {"content": [{"type": "thinking", "thinking": "They want a factorial function. I should use recursion or iteration. Let me write both options."}, {"type": "text", "text": "Here's a factorial function:"}, {"type": "tool_use", "name": "Write", "input": {"file_path": "/tmp/factorial.py", "content": "def factorial(n):\n    if n <= 1:\n        return 1\n    return n * factorial(n - 1)"}}]}}

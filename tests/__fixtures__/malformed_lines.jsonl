@@ -1,0 +1,7 @@
+{"type": "user", "message": {"content": "Good line 1"}}
+not json at all
+{"type": "user", "message": {"content": "Good line 2"}}
+{"broken json without closing
+{"type": "assistant", "message": {"content": [{"type": "text", "text": "Good response"}]}}
+null
+{"type": "user", "message": {"content": "Good line 3"}}

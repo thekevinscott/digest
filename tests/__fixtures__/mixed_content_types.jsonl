@@ -1,0 +1,7 @@
+{"type": "user", "message": {"content": "Start task"}}
+{"type": "assistant", "message": {"content": [{"type": "text", "text": "Let me check multiple files."}]}}
+{"type": "assistant", "message": {"content": [{"type": "tool_use", "name": "Read", "input": {"file_path": "/a.txt"}}, {"type": "tool_use", "name": "Read", "input": {"file_path": "/b.txt"}}]}}
+{"type": "user", "message": {"content": [{"type": "tool_result", "content": "Contents of A"}, {"type": "tool_result", "content": "Contents of B"}]}}
+{"type": "assistant", "message": {"content": [{"type": "text", "text": "Now I'll edit."}, {"type": "tool_use", "name": "Edit", "input": {"file_path": "/a.txt", "old": "x", "new": "y"}}]}}
+{"type": "user", "message": {"content": [{"type": "tool_result", "content": "Edit successful"}]}}
+{"type": "assistant", "message": {"content": [{"type": "text", "text": "Done!"}]}}

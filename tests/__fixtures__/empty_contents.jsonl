@@ -1,0 +1,7 @@
+{"type": "user", "message": {"content": ""}}
+{"type": "user", "message": {"content": null}}
+{"type": "user", "message": {"content": []}}
+{"type": "assistant", "message": {"content": []}}
+{"type": "assistant", "message": {"content": [{"type": "text", "text": ""}]}}
+{"type": "user", "message": {"content": "Actually has content"}}
+{"type": "assistant", "message": {"content": [{"type": "text", "text": "Real response here"}]}}

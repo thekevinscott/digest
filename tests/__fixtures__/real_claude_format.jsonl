@@ -1,0 +1,7 @@
+{"type": "user", "message": {"content": "Can you read my config file?"}, "timestamp": "2024-01-15T10:30:00Z"}
+{"type": "assistant", "message": {"content": [{"type": "text", "text": "I'll read your config file now."}]}, "timestamp": "2024-01-15T10:30:01Z"}
+{"type": "assistant", "message": {"content": [{"type": "tool_use", "id": "toolu_123", "name": "Read", "input": {"file_path": "/home/user/.config/app.toml"}}]}, "timestamp": "2024-01-15T10:30:02Z"}
+{"type": "user", "message": {"content": [{"type": "tool_result", "tool_use_id": "toolu_123", "content": [{"type": "text", "text": "[settings]\ntheme = \"dark\"\neditor = \"vim\""}]}]}, "timestamp": "2024-01-15T10:30:03Z"}
+{"type": "assistant", "message": {"content": [{"type": "text", "text": "Your config shows:\n- Theme: dark\n- Editor: vim\n\nWould you like me to modify anything?"}]}, "timestamp": "2024-01-15T10:30:04Z"}
+{"type": "user", "message": {"content": "No thanks, that's all I needed"}, "timestamp": "2024-01-15T10:30:10Z"}
+{"type": "assistant", "message": {"content": [{"type": "text", "text": "You're welcome! Let me know if you need anything else."}]}, "timestamp": "2024-01-15T10:30:11Z"}

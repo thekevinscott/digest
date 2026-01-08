@@ -1,0 +1,4 @@
+{"type": "user", "message": {"content": "Hello! Can you help with some unicode? Here's cafe, naive, and some CJK: \u4e2d\u6587"}}
+{"type": "assistant", "message": {"content": [{"type": "text", "text": "Sure! Here are some symbols: \u2713 \u2717 \u2192 \u2190 \u221e and Greek: \u03b1\u03b2\u03b3\u03b4"}]}}
+{"type": "user", "message": {"content": "What about RTL text? \u0645\u0631\u062d\u0628\u0627"}}
+{"type": "assistant", "message": {"content": [{"type": "text", "text": "And some box drawing: \u250c\u2500\u2500\u2510\n\u2502  \u2502\n\u2514\u2500\u2500\u2518"}]}}
