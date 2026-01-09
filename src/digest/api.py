@@ -5,6 +5,7 @@ This module provides the programmatic API. The CLI wraps these functions.
 """
 
 import json
+import subprocess
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -50,6 +51,15 @@ class MarkResult:
 
     session_id: str
     lines_marked: int
+
+
+@dataclass
+class NoteResult:
+    """Result of adding a note to a digest file."""
+
+    file_path: Path
+    timestamp: str
+    lines_added: int
 
 
 class DigestAPI:
@@ -290,6 +300,68 @@ class DigestAPI:
         processed_file.write_text(json.dumps({"lineNumber": total}))
 
         return MarkResult(session_id=session_id, lines_marked=total)
+
+    def add_note(
+        self,
+        file_path: str | Path,
+        text: str,
+        project: str | None = None,
+    ) -> NoteResult:
+        """
+        Prepend timestamped note entry to a digest file.
+
+        Args:
+            file_path: Target file path (relative to base_dir or absolute)
+            text: Text to add (should include inline source refs like [session:line])
+            project: Optional project name for ## header
+
+        Returns:
+            NoteResult with file path, timestamp, and lines added.
+        """
+        # Resolve file path
+        path = Path(file_path)
+        if not path.is_absolute():
+            path = self.base_dir / path
+
+        # Ensure parent directory exists
+        path.parent.mkdir(parents=True, exist_ok=True)
+
+        # Get timestamp from system
+        result = subprocess.run(
+            ["date", "+%Y-%m-%d %H:%M"],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        timestamp = result.stdout.strip()
+
+        # Build entry block
+        lines = text.strip().split("\n")
+        entry_parts = ["---", f"### {timestamp}"]
+
+        if project:
+            entry_parts.append("")
+            entry_parts.append(f"## {project}")
+
+        entry_parts.append("")
+        entry_parts.extend(lines)
+        entry_parts.append("")
+
+        entry = "\n".join(entry_parts)
+
+        # Read existing content if file exists
+        existing = ""
+        if path.exists():
+            existing = path.read_text()
+
+        # Prepend entry to file
+        path.write_text(entry + existing)
+
+        return NoteResult(
+            file_path=path,
+            timestamp=timestamp,
+            lines_added=len(lines),
+        )
 
 
 # Module-level convenience functions using default API instance

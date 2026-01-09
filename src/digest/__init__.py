@@ -2,9 +2,10 @@
 digest - Extract insights from Claude Code transcripts into artifact files.
 
 Usage:
-    digest --list                    Show transcripts with unprocessed lines
-    digest --extract <id> [cursor]   Extract content starting from cursor line
-    digest --mark <id>               Mark transcript as fully processed
+    digest list                      Show transcripts with unprocessed lines
+    digest extract <id> [cursor]     Extract content starting from cursor line
+    digest mark <id>                 Mark transcript as fully processed
+    digest note <file> [text]        Add timestamped note to digest file
 """
 
 # Re-export API
@@ -14,6 +15,7 @@ from .api import (
     DigestAPI,
     ExtractResult,
     MarkResult,
+    NoteResult,
     TranscriptStatus,
     extract,
     list_transcripts,
@@ -31,6 +33,7 @@ __all__ = [
     "DigestAPI",
     "ExtractResult",
     "MarkResult",
+    "NoteResult",
     "TranscriptStatus",
     # Functions
     "extract",

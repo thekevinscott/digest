@@ -19,30 +19,12 @@ All in `notes/digest/`:
 | `blog-grist.md` | Significant work completed, problems solved, patterns discovered |
 | `things-learned.md` | Preferences, environment facts, workflow learnings |
 
-## Entry Format
-
-Append only the entry block - no file headers, titles, or descriptions:
-
-```
----
-### YYYY-MM-DD HH:MM
-
-## project-name
-
-- Item from this session
-- Another item
-```
-
-Use `date '+%Y-%m-%d %H:%M'` to get the current timestamp.
-
-Do not add `# File Title` or description text. Files are append-only logs.
-
 ## Instructions
 
 ### 1. Find unprocessed transcripts
 
 ```bash
-uv run --project ~/.claude/skills/digest digest --list
+uv run --project ~/.claude/skills/digest digest list
 ```
 
 If output is "Nothing new to process", stop here.
@@ -50,7 +32,7 @@ If output is "Nothing new to process", stop here.
 Use `--path <dir>` to specify a different base directory (defaults to cwd):
 
 ```bash
-uv run --project ~/.claude/skills/digest digest --path /other/project --list
+uv run --project ~/.claude/skills/digest digest --path /other/project list
 ```
 
 ### 2. Extract and analyze
@@ -58,12 +40,12 @@ uv run --project ~/.claude/skills/digest digest --path /other/project --list
 For each session with new content:
 
 ```bash
-uv run --project ~/.claude/skills/digest digest --extract <session_id>
+uv run --project ~/.claude/skills/digest digest extract <session_id>
 ```
 
 This outputs cleaned message text (user/assistant only, no metadata).
 
-**What to look for**:
+**What to look for** (include source ref `[session_id:line]` for each item):
 
 **Opportunities** (`opportunities.md`):
 - "could improve", "should optimize", "better way"
@@ -90,15 +72,32 @@ This outputs cleaned message text (user/assistant only, no metadata).
 - Environment facts (paths, configs, tools)
 - Workflow patterns to remember
 
-### 3. Mark processed
+### 3. Add notes
+
+Use the `note` command to add entries. It handles timestamp and formatting automatically:
+
+```bash
+uv run --project ~/.claude/skills/digest digest note notes/digest/opportunities.md --project "project-name" "- Insight here [session_id:line]"
+```
+
+Or pipe multiple lines:
+
+```bash
+echo "- First insight [abc123:42]
+- Second insight [abc123:55]" | uv run --project ~/.claude/skills/digest digest note notes/digest/opportunities.md --project "myproject"
+```
+
+The CLI prepends entries with a timestamp from `date '+%Y-%m-%d %H:%M'`.
+
+### 4. Mark processed
 
 After extracting insights from a session:
 
 ```bash
-uv run --project ~/.claude/skills/digest digest --mark <session_id>
+uv run --project ~/.claude/skills/digest digest mark <session_id>
 ```
 
-### 4. Report
+### 5. Report
 
 Brief summary:
 - Sessions processed: N (X new lines)
